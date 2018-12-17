@@ -1,0 +1,11 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: keyvaultsecrets.secretcontroller.twendt.de
+spec:
+  group: secretcontroller.twendt.de
+  version: v1alpha1
+  names:
+    kind: KeyvaultSecret
+    plural: keyvaultsecrets
+  scope: Namespaced

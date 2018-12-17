@@ -1,0 +1,6 @@
+FROM golang:1.11
+WORKDIR /go/src/github.com/twendt/secret-controller
+ENV GOPATH /go
+COPY . ./
+RUN go get
+
