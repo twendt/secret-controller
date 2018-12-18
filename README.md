@@ -43,8 +43,8 @@ docker build -f Dockerfile.build -t secret-controller .
 
 There is an example Helm chart in the `helm` directory. At least the following values have to be configured in `values.yaml`:
 
-* repoBase This is the Docker registry. There is no prebult image available in Dockerhub
-* vaultName The Name of the Azure Key vault to use
+* repoBase This is the Docker registry. There is no pre-built image available in Dockerhub
+* vaultName The name of the Azure Key vault to use
 
 See `values.yaml` for further parameters.
 
@@ -80,7 +80,7 @@ The Kubernetes secret being created will get the same name as the KeyvaultSecret
 
 The items in the manifest define the entries within the secret that will be created.
 
-As you can see there is 2 ways to define the items:
+As you can see there are 2 ways to define the items:
 
 **keyvaultName and kubernetesName**
 
@@ -92,7 +92,7 @@ The `kubernetesName` defines the key that will be used within the Kubernetes sec
 
 The `kubernetesName` defines the key that will be used within the Kubernetes secret.
 
-The `secretTemplate` provides a very flexible way to define the value of the secret entry. You can use a combination of static text and Go templates. To be able to use this in Helm charts, the secret-controller uses `[[` and `]]` as template markers. This makes sure that Helm does not evaluate them. This also enables the possibility to use variables that Helm can replace so that you can for instance have Helm evaluate the hostname in the above example by using something lihe `{{ .Values.postgres.hostname }}` instead of pghost.
+The `secretTemplate` provides a very flexible way to define the value of the secret entry. You can use a combination of static text and Go templates. To be able to use this in Helm charts, the secret-controller uses `[[` and `]]` as template markers. This makes sure that Helm does not evaluate them. This also enables the possibility to use variables that Helm can replace so that you can for instance have Helm evaluate the hostname in the above example by using something like `{{ .Values.postgres.hostname }}` instead of pghost.
 
 The secret-controller provides 2 template functions to retrieve the secret values from Azure Key Vault:
 * secretValue This retrieves the latest version of the secret from Azure Key Vault
